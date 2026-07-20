@@ -4,7 +4,7 @@
 
 ### 3.1 Introduction
 
-The methodology used in this project covers the process of designing, building, and testing the in-vehicle child safety system. This project follows a **prototype design and development approach**, which involves component selection, circuit assembly, firmware development, and functional & performance testing. This approach was chosen because it allows the researcher to develop the system in stages and test each module individually before full integration.
+in this project covers the process of designing, building, and testing the in-vehicle child safety system. This project follows a **prototype design and development approach**, which involves component selection, circuit assembly, firmware development, and functional & performance testing. This approach was chosen because it allows the researcher to develop the system in stages and test each module individually before full integration.
 
 ---
 
