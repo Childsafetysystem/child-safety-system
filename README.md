@@ -1,7 +1,5 @@
 # Child Safety System - Metodologi
 
----
-
 ## 2.0 METODOLOGI
 
 ### 2.1 Reka Bentuk Projek
@@ -23,20 +21,10 @@ Apabila radar mengesan kehadiran kanak-kanak, sistem akan menghantar notifikasi 
 
 ---
 
-### Rajah 1: Blok Sistem Keselamatan Kanak-Kanak
-
-![Blok Sistem](images/blok-sistem.jpg)
-
-> *[Gambar rajah blok sistem akan diletakkan di sini]*
-
----
-
 ### 2.3 Senarai Mikropengawal Utama dan Komponen Utama
 
-**Jadual 1: Senarai Komponen**
-
-| No | Nama Komponen | Fungsi | Harga (RM) |
-|----|---------------|--------|------------|
+| No. | Nama Komponen | Fungsi | Harga (RM) |
+|-----|---------------|--------|------------|
 | 1 | ESP32 Dev Module | Mengawal keseluruhan sistem | 18.00 |
 | 2 | HLK-LD2410C | Mengesan kehadiran manusia | 3.97 |
 | 3 | Buzzer | Memberi amaran bunyi | 0.59 |
@@ -45,36 +33,28 @@ Apabila radar mengesan kehadiran kanak-kanak, sistem akan menghantar notifikasi 
 | 6 | A7670C | Penghantaran komunikasi | 28.08 |
 | | **Jumlah** | | **79.00** |
 
----
-
-### 2.4 Pemasangan Litar
-
-**Rajah 2: Pemasangan Litar**
-
-![Pemasangan Litar](images/pemasangan-litar.jpg)
-
-> *[Gambar pemasangan litar akan diletakkan di sini]*
+*Jadual 1: Senarai Komponen*
 
 ---
 
-### 2.5 Prosedur Pengumpulan Data
+### 2.4 Prosedur Pengumpulan Data
 
 Kajian ini dijalankan di dalam kabin kenderaan sebenar dengan empat keadaan:
 
-**Jadual 2: Keadaan Ujian**
-
 | Keadaan | Penerangan | Tujuan |
 |---------|------------|--------|
-| **A: Keadaan Normal** | Tiada apa-apa di atas carseat | Sebagai kawalan untuk memastikan sistem tidak aktif apabila tiada objek/manusia. |
-| **B: Baby Carseat Kosong + Tangan** | Carseat kosong, tangan di hadapan radar | Menguji pengesanan radar tanpa berat |
-| **C: Beg di Atas Carseat** | Beg di atas carseat, tiada tangan | Menguji sistem membezakan objek dengan manusia |
-| **D: Baby Carseat + Beg + Tangan** | Beg di atas carseat, tangan di hadapan radar | Menguji sistem dengan berat + radar |
+| A: Keadaan Normal | Tiada apa-apa di atas carseat | Sebagai kawalan untuk memastikan sistem tidak aktif apabila tiada objek/manusia |
+| B: Baby Carseat Kosong + Tangan | Carseat kosong, tangan di hadapan radar | Menguji pengesanan radar tanpa berat |
+| C: Beg di Atas Carseat | Beg di atas carseat, tiada tangan | Menguji sistem membezakan objek dengan manusia |
+| D: Baby Carseat + Beg + Tangan | Beg di atas carseat, tangan di hadapan radar | Menguji sistem dengan berat + radar |
 
-*Setiap keadaan diulang sebanyak 5 kali.*
+*Jadual 2: Keadaan Ujian*
+
+Setiap keadaan diulang sebanyak 5 kali.
 
 ---
 
-#### 2.5.1 Prosedur Ujian
+#### 2.4.2 Prosedur Ujian
 
 **Langkah 1: Persediaan**
 
@@ -97,35 +77,45 @@ Kajian ini dijalankan di dalam kabin kenderaan sebenar dengan empat keadaan:
 
 ---
 
-### 2.6 Carta Alir
+### 2.5 Carta Alir
 
-**Rajah 3: Carta Alir Sistem**
+Sistem beroperasi mengikut carta alir berikut:
 
-![Carta Alir](images/carta-alir.png)
-
-> *[Gambar carta alir akan diletakkan di sini]*
-
----
-
-### 2.7 Lakaran Kedudukan Komponen dalam Kenderaan
-
-**Rajah 4: Kedudukan Komponen dalam Kenderaan**
-
-![Kedudukan Komponen](images/kedudukan-komponen.jpg)
-
-> *[Gambar lakaran kedudukan komponen akan diletakkan di sini]*
-
----
-
-## 📝 Nota untuk Gambar
-
-| Gambar | Nama Fail | Lokasi |
-|--------|-----------|--------|
-| Rajah 1: Blok Sistem | `blok-sistem.png` | `images/` |
-| Rajah 2: Pemasangan Litar | `pemasangan-litar.png` | `images/` |
-| Rajah 3: Carta Alir | `carta-alir.png` | `images/` |
-| Rajah 4: Kedudukan Komponen | `kedudukan-komponen.png` | `images/` |
+1. MULA → ESP32 Dihidupkan
+2. Initialize semua sensor (Radar, Load Cell, SHT31, Door Sensor, 4G)
+3. Semak status enjin:
+   - Jika enjin **HIDUP** → tunggu dan semak semula
+   - Jika enjin **MATI** → teruskan ke langkah seterusnya
+4. Semak status pintu:
+   - Jika pintu **TERBUKA** → tunggu dan semak semula
+   - Jika pintu **TERTUTUP** → teruskan ke langkah seterusnya
+5. Baca data Radar:
+   - Jika Radar **TIDAK mengesan manusia** → teruskan pemantauan
+   - Jika Radar **mengesan manusia** → teruskan ke langkah seterusnya
+6. Hantar notifikasi Telegram: "Kanak-kanak dalam kenderaan"
+7. Baca suhu daripada SHT31
+8. Semak suhu:
+   - Jika suhu **< 40°C** → teruskan pemantauan
+   - Jika suhu **≥ 40°C** → aktifkan buzzer dan hantar amaran kecemasan
+9. Sistem terus memantau sehingga ESP32 dimatikan
 
 ---
 
-*— Tamat —*
+### 2.6 Lakaran Kedudukan Komponen dalam Kenderaan
+
+Komponen-komponen sistem dipasang di dalam kabin kenderaan dengan kedudukan berikut:
+
+| Komponen | Kedudukan |
+|----------|-----------|
+| ESP32 + A7670C 4G Module | Di bawah tempat duduk penumpang hadapan |
+| LD2410C Radar Sensor | Di hadapan carseat, menghadap ke arah kerusi bayi |
+| Load Cell + HX711 | Di bawah carseat (di antara tapak kerusi dan rangka) |
+| SHT31 | Berhampiran carseat (aras pernafasan bayi) |
+| PS-3150 Door Sensor | Pada bingkai pintu dan bahagian dalam pintu |
+| Buzzer | Berhampiran ESP32 untuk amaran bunyi yang jelas |
+
+Semua komponen disambungkan ke ESP32 sebagai pusat kawalan dan dikuasakan oleh bateri 18650 melalui penukar buck LM2596.
+
+---
+
+*— Tamat Bahagian Metodologi —*
