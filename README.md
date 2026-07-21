@@ -25,7 +25,7 @@ Apabila radar mengesan kehadiran kanak-kanak, sistem akan menghantar notifikasi 
 
 ### Rajah 1: Blok Sistem Keselamatan Kanak-Kanak
 
-![Blok Sistem](images/blok-sistem.png)
+![Blok Sistem](images/blok-sistem.jpg)
 
 > *[Gambar rajah blok sistem akan diletakkan di sini]*
 
@@ -51,7 +51,7 @@ Apabila radar mengesan kehadiran kanak-kanak, sistem akan menghantar notifikasi 
 
 **Rajah 2: Pemasangan Litar**
 
-![Pemasangan Litar](images/pemasangan-litar.png)
+![Pemasangan Litar](images/pemasangan-litar.jpg)
 
 > *[Gambar pemasangan litar akan diletakkan di sini]*
 
@@ -111,7 +111,7 @@ Kajian ini dijalankan di dalam kabin kenderaan sebenar dengan empat keadaan:
 
 **Rajah 4: Kedudukan Komponen dalam Kenderaan**
 
-![Kedudukan Komponen](images/kedudukan-komponen.png)
+![Kedudukan Komponen](images/kedudukan-komponen.jpg)
 
 > *[Gambar lakaran kedudukan komponen akan diletakkan di sini]*
 
