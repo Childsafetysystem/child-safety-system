@@ -101,21 +101,4 @@ Sistem beroperasi mengikut carta alir berikut:
 
 ---
 
-### 2.6 Lakaran Kedudukan Komponen dalam Kenderaan
-
-Komponen-komponen sistem dipasang di dalam kabin kenderaan dengan kedudukan berikut:
-
-| Komponen | Kedudukan |
-|----------|-----------|
-| ESP32 + A7670C 4G Module | Di bawah tempat duduk penumpang hadapan |
-| LD2410C Radar Sensor | Di hadapan carseat, menghadap ke arah kerusi bayi |
-| Load Cell + HX711 | Di bawah carseat (di antara tapak kerusi dan rangka) |
-| SHT31 | Berhampiran carseat (aras pernafasan bayi) |
-| PS-3150 Door Sensor | Pada bingkai pintu dan bahagian dalam pintu |
-| Buzzer | Berhampiran ESP32 untuk amaran bunyi yang jelas |
-
-Semua komponen disambungkan ke ESP32 sebagai pusat kawalan dan dikuasakan oleh bateri 18650 melalui penukar buck LM2596.
-
----
-
 *— Tamat Bahagian Metodologi —*
